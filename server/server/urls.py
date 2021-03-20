@@ -7,5 +7,7 @@ router.register(r'users', views.UserViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
-    path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'^rest-auth/', include('rest_auth.urls')),
+    url(r'^rest-auth/registration/', include('rest_auth.registration.urls')),
 ]
