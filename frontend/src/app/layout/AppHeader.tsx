@@ -32,7 +32,9 @@ export const AppHeader = ({ user, routes }: Props) => {
       <div className="header-left">
         <Typography.Title level={3}>MVP Django React! 🤠</Typography.Title>
         {routes?.map((route) => (
-          <Link to={route.path}>{route.label}</Link>
+          <Link key={`${route.path}-${route.label}`} to={route.path}>
+            {route.label}
+          </Link>
         ))}
       </div>
       <div>

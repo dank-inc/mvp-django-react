@@ -6,6 +6,7 @@ import { Route, Switch } from 'react-router'
 import { Dashboard } from './pages/Dashboard'
 import { NavRoute, AppHeader } from './layout/AppHeader'
 import { Profile } from './pages/Profile'
+import { NewUser } from './forms/NewUser'
 
 export const CoreLayout = () => {
   const { user } = useUserContext()
@@ -13,6 +14,7 @@ export const CoreLayout = () => {
   const routes: NavRoute[] = [
     { exact: true, path: '/', label: 'Dashboard', component: Dashboard },
     { path: '/profile', label: 'Profile', component: Profile },
+    { path: '/new/user', label: 'New User', component: NewUser },
   ]
 
   if (!user)
