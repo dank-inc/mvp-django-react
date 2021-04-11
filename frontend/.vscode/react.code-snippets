@@ -1,0 +1,51 @@
+{
+	"New Functional Component": {
+		"scope": "typescriptreact",
+		"prefix": "fc",
+		"body": [
+			"type Props = {}",
+			"",
+			"export const $1 = (props: Props) => {",
+			"  return <p>$2</p>",
+			"}"
+		],
+		"description": "React Component w/props"
+	},
+	"New Functional Route Component": {
+		"scope": "typescriptreact",
+		"prefix": "fc-routed",
+		"body": [
+			"import { RouteComponentProps } from 'react-router'",
+			"type Props = RouteComponentProps",
+			"",
+			"export const $1 = ({match}: Props) => {",
+			"  return <p>$2</p>",
+			"}"
+		],
+		"description": "React Routed Component"
+	},
+	"New Page Component": {
+		"scope": "typescriptreact",
+		"prefix": "fc-page",
+		"body": [
+			"export const $1 = () => {",
+			"  return <p>$2</p>",
+			"}"
+		],
+		"description": "React Page Component No Props"
+	},
+	"New Form Component": {
+		"scope": "typescriptreact",
+		"prefix": "fc-form",
+		"body": [
+			"import { Form, Input, Layout } from 'antd'",
+			"",
+			"export const $1 = () => {",
+			"  const [form] = Form.useForm()",
+			"  return <Form form={form}>$2</Form>",
+			"}"
+		],
+		"description": "React Page Component No Props"
+		
+	}
+}

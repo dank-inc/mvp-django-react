@@ -1,8 +1,8 @@
 import React from 'react'
-import { Avatar, Typography } from 'antd'
+import { Avatar, Button, Typography } from 'antd'
 import { Header } from 'antd/lib/layout/layout'
 import { User } from '../types'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 
 export type NavRoute = {
   path: string
@@ -17,6 +17,7 @@ type Props = {
 }
 
 export const AppHeader = ({ user, routes }: Props) => {
+  const history = useHistory()
   // Unauthed Header
   if (!user)
     return (
@@ -34,9 +35,12 @@ export const AppHeader = ({ user, routes }: Props) => {
           <Link to={route.path}>{route.label}</Link>
         ))}
       </div>
+      <div>
+        <Button onClick={() => history.push('/new/user')}>New User</Button>
+      </div>
       <div className="header-right">
         <Typography.Paragraph>Welcome, {user.username}!!</Typography.Paragraph>
-        <Avatar />
+        <Avatar>{user.username[0]}</Avatar>
       </div>
     </Header>
   )

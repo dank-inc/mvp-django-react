@@ -34,3 +34,12 @@
   // background-color: #444;
   // color: white;
 }
+
+.ant-avatar {
+  display: flex;
+
+  * {
+    margin: auto;
+    padding: 0;
+  }
+}
