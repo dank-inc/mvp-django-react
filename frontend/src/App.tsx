@@ -1,6 +1,6 @@
 import { BrowserRouter } from 'react-router-dom'
 import { UserContextProvider } from './contexts/UserContext'
-import { CoreLayout } from './layout/CoreLayout'
+import { CoreLayout } from './app/CoreLayout'
 import './scss/app.scss'
 
 const App = () => {

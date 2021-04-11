@@ -12,6 +12,7 @@ import { useHistory } from 'react-router'
 
 import { User } from '../types'
 import { getLoggedInUser, logIn, logOut } from '../api'
+import axios from 'axios'
 
 type Props = {
   children: React.ReactNode
@@ -34,6 +35,10 @@ export const UserContextProvider = ({ children }: Props) => {
   useEffect(() => {
     const login = async () => {
       try {
+        const res = axios.post('/dj-rest-auth/login', {
+          email: 'blah',
+          password: 'blah',
+        })
         const user = await getLoggedInUser()
         if (!user) throw new Error()
         setUser(user)

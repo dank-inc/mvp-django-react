@@ -1,7 +1,7 @@
 import React from 'react'
 import { Avatar, Button, Typography } from 'antd'
 import { Header } from 'antd/lib/layout/layout'
-import { User } from '../types'
+import { User } from '../../types'
 import { Link, useHistory } from 'react-router-dom'
 
 export type NavRoute = {

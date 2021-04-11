@@ -1,11 +1,11 @@
 import React from 'react'
 import { Layout } from 'antd'
 import { useUserContext } from '../contexts/UserContext'
-import { Login } from '../pages/Login'
+import { Login } from './pages/Login'
 import { Route, Switch } from 'react-router'
-import { Dashboard } from '../pages/Dashboard'
-import { NavRoute, AppHeader } from './AppHeader'
-import { Profile } from '../pages/Profile'
+import { Dashboard } from './pages/Dashboard'
+import { NavRoute, AppHeader } from './layout/AppHeader'
+import { Profile } from './pages/Profile'
 
 export const CoreLayout = () => {
   const { user } = useUserContext()
