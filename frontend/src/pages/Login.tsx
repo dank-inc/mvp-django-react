@@ -1,4 +1,4 @@
-import React, { FormEvent, useState } from 'react'
+import { FormEvent, useState } from 'react'
 import { useUserContext } from '../contexts/UserContext'
 
 export const Login = () => {

@@ -1,7 +1,7 @@
 import { message } from 'antd'
 import axios from 'axios'
 import { User } from '../types'
-import { mockUser } from '../data'
+import { mockUser } from './data'
 import { JWT, getJWT, setHeaders, setJWT, wipeJWT } from '../utils/jwt'
 
 const dev = process.env.NODE_ENV === 'development'

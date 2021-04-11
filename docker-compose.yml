@@ -6,6 +6,7 @@ services:
       context: ./frontend
     volumes:
       - ./frontend/src:/usr/src/frontend/src
+      - ./frontend/public:/usr/src/frontend/public
     ports:
       - 3000:3000
     environment:

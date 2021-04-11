@@ -1,10 +1,9 @@
-import React from 'react'
 import { BrowserRouter } from 'react-router-dom'
 import { UserContextProvider } from './contexts/UserContext'
 import { CoreLayout } from './layout/CoreLayout'
-import './scss/App.scss'
+import './scss/app.scss'
 
-function App() {
+const App = () => {
   return (
     <BrowserRouter>
       <UserContextProvider>

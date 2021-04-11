@@ -1,7 +1,3 @@
-import React from 'react'
-
-type Props = {}
-
-export const Profile = (props: Props) => {
+export const Profile = () => {
   return <p>Look, A user profile!</p>
 }

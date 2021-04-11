@@ -1,29 +1,26 @@
-
 .ant-layout-header.app-header {
-  display: flex; 
+  display: flex;
   flex-direction: row;
   justify-content: space-between;
   vertical-align: middle;
   padding: 0 1rem;
 
- a {
-   font-size: 1.2rem;
-   font-weight: bold;
- }
+  a {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
 
   div {
     display: flex;
     vertical-align: middle;
     height: 100%;
 
-    * { 
+    * {
       margin: auto 0.5rem;
     }
-
   }
 
   h3.ant-typography {
-    
     margin: auto 0 !important;
   }
 
