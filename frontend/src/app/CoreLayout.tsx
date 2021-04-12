@@ -1,4 +1,3 @@
-import React from 'react'
 import { Layout } from 'antd'
 import { useUserContext } from '../contexts/UserContext'
 import { Login } from './pages/Login'
@@ -14,6 +13,7 @@ export const CoreLayout = () => {
   const routes: NavRoute[] = [
     { exact: true, path: '/', label: 'Dashboard', component: Dashboard },
     { path: '/profile', label: 'Profile', component: Profile },
+    { path: '/login', label: 'Login', component: Login },
     { path: '/new/user', label: 'New User', component: NewUser },
   ]
 

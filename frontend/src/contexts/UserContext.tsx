@@ -12,7 +12,6 @@ import { useHistory } from 'react-router'
 
 import { User } from '../types'
 import { getLoggedInUser, logIn, logOut } from '../api'
-import axios from 'axios'
 
 type Props = {
   children: React.ReactNode

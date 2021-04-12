@@ -2,8 +2,6 @@ import { Button, Form, Input, Layout, message } from 'antd'
 import axios from 'axios'
 import { User } from '../../types'
 
-axios.defaults.baseURL = 'http://localhost:8080/'
-
 type NewUserForm = Omit<User, 'id'> & {
   password1: string
   password2: string
@@ -19,7 +17,7 @@ export const NewUser = () => {
       return
     }
 
-    axios.post(`/dj-rest-auth/registration`, user)
+    axios.post(`/dj-rest-auth/registration/`, user)
   }
 
   console.log('ASDFUASDJF')
@@ -28,14 +26,14 @@ export const NewUser = () => {
     <Layout>
       <Layout.Content>
         <Form form={form} onFinish={handleFinish}>
-          <Form.Item label="username" name="name">
+          <Form.Item label="username" name="username">
             <Input></Input>
           </Form.Item>
           <Form.Item label="email" name="email">
-            <Input></Input>
+            <Input type="email"></Input>
           </Form.Item>
           <Form.Item label="password" name="password1">
-            <Input></Input>
+            <Input minLength={8}></Input>
           </Form.Item>
           <Form.Item label="confirm" name="password2">
             <Input></Input>

@@ -7,10 +7,10 @@ import { JWT, getJWT, setHeaders, setJWT, wipeJWT } from '../utils/jwt'
 const dev = process.env.NODE_ENV === 'development'
 
 export const logIn = async (username: string, password: string) => {
-  if (dev) return mockUser
+  // if (dev) return mockUser
 
   try {
-    const { data: jwt } = await axios.post<JWT>(`/api/login`, {
+    const { data: jwt } = await axios.post<JWT>(`/api/dj-rest-auth/login/`, {
       username,
       password,
     })
