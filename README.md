@@ -20,11 +20,9 @@ python manage.py createsuperuser --email admin@example.com --username admin --pa
 
 # Frontend
 
-- [x] useGet hook
 - [x] User context
 - [x] auth api
 - [ ] user crud api (new user flow)
-- [ ] socket hook
 
 # Backend
 

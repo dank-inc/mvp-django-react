@@ -51,7 +51,7 @@ export class Api {
   }
 }
 
-export const logOut = () => {
+export const logOut = async () => {
   wipeJWT()
   // axios -> delete session?
 }
