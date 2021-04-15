@@ -1,8 +1,8 @@
-import React from 'react'
-import { Avatar, Button, Typography } from 'antd'
+import { Avatar, Button, Dropdown, Menu } from 'antd'
 import { Header } from 'antd/lib/layout/layout'
 import { User } from '../../types'
 import { Link, useHistory } from 'react-router-dom'
+import { useUserContext } from '../../contexts/UserContext'
 
 export type NavRoute = {
   path: string
@@ -13,16 +13,16 @@ export type NavRoute = {
 
 type Props = {
   user: User | null
-  routes?: NavRoute[]
 }
 
-export const AppHeader = ({ user, routes }: Props) => {
+export const AppHeader = ({ user }: Props) => {
+  const { handleLogout } = useUserContext()
   const history = useHistory()
   // Unauthed Header
   if (!user)
     return (
       <Header className="app-header">
-        <Typography.Title level={3}>MVP Django React! 🤠</Typography.Title>
+        <h3>MVP Django React! 🤠</h3>
       </Header>
     )
 
@@ -30,19 +30,29 @@ export const AppHeader = ({ user, routes }: Props) => {
   return (
     <Header className="app-header">
       <div className="header-left">
-        <Typography.Title level={3}>MVP Django React! 🤠</Typography.Title>
-        {routes?.map((route) => (
-          <Link key={`${route.path}-${route.label}`} to={route.path}>
-            {route.label}
-          </Link>
-        ))}
+        <Link to="/">
+          <h1>MVP Django React! 🤠</h1>
+        </Link>
       </div>
       <div>
         <Button onClick={() => history.push('/new/user')}>New User</Button>
       </div>
       <div className="header-right">
-        <Typography.Paragraph>Welcome, {user.username}!!</Typography.Paragraph>
-        <Avatar>{user.username[0]}</Avatar>
+        <p>Welcome, {user.username}!!</p>
+        <Dropdown
+          overlay={
+            <Menu style={{ display: 'flex', flexDirection: 'column' }}>
+              <Button onClick={() => history.push('/login')}>Login</Button>
+              <Button onClick={handleLogout}>Logout</Button>
+              <Button onClick={() => history.push('/forgot-password')}>
+                Forgot Password
+              </Button>
+              <Button onClick={() => history.push('/profile')}>Profile</Button>
+            </Menu>
+          }
+        >
+          <Avatar>{user.username[0]}</Avatar>
+        </Dropdown>
       </div>
     </Header>
   )

@@ -1,41 +1,57 @@
-import { message } from 'antd'
-import axios from 'axios'
+import Axios, { AxiosInstance } from 'axios'
 import { User } from '../types'
-import { mockUser } from './data'
-import { JWT, getJWT, setHeaders, setJWT, wipeJWT } from '../utils/jwt'
+import { JWT, setJWT, wipeJWT } from '../utils/jwt'
+import { DataBuddy } from '@dank-inc/data-buddy'
 
-const dev = process.env.NODE_ENV === 'development'
+export type ApiParams = {
+  baseURL?: string
+  mock?: boolean
+  users: DataBuddy<User>
+}
 
-export const logIn = async (username: string, password: string) => {
-  // if (dev) return mockUser
+export interface Api {
+  mock?: boolean
+  users: DataBuddy<User>
+  axios: AxiosInstance
+}
 
-  try {
-    const { data: jwt } = await axios.post<JWT>(`/api/dj-rest-auth/login/`, {
+export class Api {
+  constructor({ mock, users, baseURL }: ApiParams) {
+    this.mock = mock
+    this.users = users
+    this.axios = Axios.create({ baseURL })
+  }
+
+  login = async (username: string, password: string): Promise<JWT> => {
+    if (this.mock)
+      return {
+        id: 'mock-id',
+        token: 'token-token-token',
+        exp: +new Date(),
+      }
+
+    const { data } = await this.axios.post<JWT>(`/api/dj-rest-auth/login/`, {
       username,
       password,
     })
 
-    setJWT(jwt)
+    setJWT(data)
+    return data
+  }
 
-    const user = await getLoggedInUser()
-    return user
-  } catch (err) {
-    console.log(err)
-    message.error('Error logging in!')
+  logout = () => {
+    if (this.mock) return true
+    wipeJWT()
+  }
+
+  getUser = async (id: string) => {
+    if (this.mock) return this.users.getOne(id)
+    const { data } = await this.axios.get<User>(`users/${id}`)
+    return data
   }
 }
 
 export const logOut = () => {
   wipeJWT()
   // axios -> delete session?
-}
-
-export const getLoggedInUser = async () => {
-  if (dev) return mockUser
-
-  const jwt = getJWT()
-  if (!jwt) throw new Error('User not logged in') // TODO: decorator
-
-  const { data } = await axios.get<User>(`/users/${jwt.id}`, setHeaders())
-  return data
 }
